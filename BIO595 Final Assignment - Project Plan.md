@@ -2,9 +2,9 @@
 
 ## Background Summary
 
-There are two main types of immunity, i.e. innate and adaptive immunity. Innate immunity is usually regarded as our body first line defense mechanism. One of the components of human innate immune system is natural killer cells. <\br>
+There are two main types of immunity, i.e. innate and adaptive immunity. Innate immunity is usually regarded as our body first line defense mechanism. One of the components of human innate immune system is natural killer cells. </br>
 
-What are natural killer cells?<\br>
+What are natural killer cells?</br>
 Natural killer cells, also known as NK cells, are large granular lymphocytes (a type of white blood cell). NK cells respond quickly to a wide variety of pathological challenges. They play a major role in fighting tumours or cancerous cells, as well as useful in combating virally infected cells (Caligiuri, 2008). 
 NK cells are cytotoxic; small granules in their cytoplasm contain special proteins such as perforin and proteases known as granzymes. Upon release in close proximity to a cell slated for killing, perforin forms pores in the cell membrane of the target cell through which the granzymes and associated molecules can enter, inducing apoptosis. The distinction between apoptosis and cell lysis is important in immunology: -lysing a virus-infected cell would only release the virions, whereas apoptosis leads to destruction of the virus inside (https://www.sciencedaily.com/terms/natural_killer_cell.htm). 
 NK cells serve to contain viral infections while the adaptive immune response is generating antigen-specific cytotoxic T cells that can clear the infection. Individuals with NK cell deficiency or abnormalitiy are more susceptible to viral infection. Studies reported that this immunological defect in some cases can lead to overwhelming fatal infection during childhood (Caligiuri, 2008).
