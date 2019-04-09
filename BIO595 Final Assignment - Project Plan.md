@@ -16,9 +16,25 @@ Acute viral infection is usually accompanied by early production of infectious v
 
 Manipulation of NK cells seems to hold promise in efforts to improve organ transplantation, promote antitumor immunotherapy and control inflammatory and autoimmune disorders (Vivier et. al, 2008). Hence, with sequencing techniques have significantly improved and popularized, gene expression profiling of human NK cells could provide a better picture and important details necessary to uncover the origin of functional and phenotypical differences between viremic patients and healthy subjects (Boeijen et. al, 2018). The results from this study could benefit and facilitate future in vitro manipulation experiments.</br>
 
-<b>The aims are:</b>
+### Goals
 1.	to compare NK cell transcripts of viremic HIV, HCV and HBV untreated patients.
 2.	to utilize the published sequencing datasets and apply a different transcriptomics analysis approach.
 
+### Data Description
+
+### Analysis Plan
+1. Sequence reads pre-processing
+    - trim adapters and low quality score sequences
+    - measure GC content of reads
+    - tool: Fastp
+
+2. Align reads to human reference genome hg19
+    - tool: HISAT2 or STAR
+3. Assemble and quantify reads
+    - tool: StringTie
+4. Differential gene expression analysis
+    - to compare NK cells gene expression between disease infected patients and healthy individuals
+    - tool: DESeq2/ edgeR
+5. Statistical testing
 
 
