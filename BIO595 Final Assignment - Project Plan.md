@@ -21,20 +21,21 @@ Manipulation of NK cells seems to hold promise in efforts to improve organ trans
 2.	to utilize the published sequencing datasets and apply a different transcriptomics analysis approach.
 
 ### Data Description
-Data description
-Information	Description
-Assay type	RNA-Seq
-Instrument	Illumina HiSeq 2500
-Library selection	cDNA
-Library source	transcriptomic
-Data store	GSE125686
-Location	Patients recruited from outpatient clinic of the Erasmus MC Rotterdam
-Number of subjects	Healthy control 1 (Asian): 8
-Healthy control 2 (Caucasian): 12
-HIV (Caucasian): 6
-Hepatitis C, HCV (Caucasian): 8
-Hepatitis B, HBV (Asian): 32
-Total: 66
+| Information   | Description |
+| ------------- |-------------| 
+| Assay type     | RNA-Seq |
+| Instrument      | Illumina HiSeq 2500 |   
+| Library selection | cDNA     |
+| Library source | transcriptomic |
+| Data store | GSE125686 |
+| Location | Patients recruited from outpatient clinic </br>
+of the Erasmus MC Rotterdam |
+| Number of subjects | Healthy control 1 (Asian): 8 |
+|                    | Healthy control 2 (Caucasian): 12 |
+|                    | HIV (Caucasian): 6 |
+|                    | Hepatitis C, HCV (Caucasian): 8 |
+|                    | Hepatitis B, HBV (Asian): 32 |
+|                    | Total: 66 |
 
 ### Analysis Plan
 1. Sequence reads pre-processing
