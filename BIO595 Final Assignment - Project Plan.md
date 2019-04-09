@@ -1,6 +1,6 @@
-# Distinct gene expression profiling of human NK cells in HIV, HCV and HBV patients
+## Distinct gene expression profiling of human NK cells in HIV, HCV and HBV patients
 
-## Background Summary
+### Background Summary
 
 There are two main types of immunity, i.e. innate and adaptive immunity. Innate immunity is usually regarded as our body first line defense mechanism. One of the components of human innate immune system is natural killer cells. </br>
 
