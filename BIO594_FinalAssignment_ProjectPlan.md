@@ -1,5 +1,7 @@
 ## Gene expression profiling of human NK cells in HIV, HCV and HBV patients
 
+Swan Tan
+
 ### Background Summary
 
 There are two main types of immunity, i.e. innate and adaptive immunity. Innate immunity is usually regarded as our body first line defense mechanism. One of the components of human innate immune system is natural killer cells. </br>
@@ -25,12 +27,12 @@ Manipulation of NK cells seems to hold promise in efforts to improve organ trans
 2.	To utilize the published sequencing datasets and apply a different transcriptomics analysis approach.
 
 ### Data Description
-| Information   | Description |
-| ------------- |-------------| 
-| Assay type     | RNA-Seq |
-| Instrument      | Illumina HiSeq 2500 |   
-| Library selection | cDNA     |
-| Library source | transcriptomic |
+| Information | Description |
+| ------------- | ------------- | 
+| Assay type | RNA-Seq |
+| Instrument | Illumina HiSeq 2500 |   
+| Library selection | cDNA |
+| Library source | Transcriptomic |
 | Data store | [GSE125686](https://www.ncbi.nlm.nih.gov/gds/?term=GSE125686) |
 | Location | Patients recruited from outpatient clinic of the Erasmus MC Rotterdam |
 | Number of subjects | Healthy control 1 (Asian): 8 </br> Healthy control 2 (Caucasian): 12 </br> HIV (Caucasian): 6 </br> Hepatitis C, HCV (Caucasian): 8 </br> Hepatitis B, HBV (Asian): 32 </br> Total: 66 |
