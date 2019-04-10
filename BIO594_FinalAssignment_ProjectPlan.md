@@ -27,29 +27,24 @@ Manipulation of NK cells seems to hold promise in efforts to improve organ trans
 2.	To utilize the published sequencing datasets and apply a different transcriptomics analysis approach.
 
 ### Data Description
-| Information | Description |
+| **Information** | **Description** |
 | ------------- | ------------- | 
 | Assay type | RNA-Seq |
 | Instrument | Illumina HiSeq 2500 |   
 | Library selection | cDNA |
 | Library source | Transcriptomic |
-| Data store | [GSE125686](https://www.ncbi.nlm.nih.gov/gds/?term=GSE125686) |
+| DataSets series | [GSE125686](https://www.ncbi.nlm.nih.gov/gds/?term=GSE125686) |
+| Sample type | SRA |
 | Location | Patients recruited from outpatient clinic of the Erasmus MC Rotterdam |
 | Number of subjects | Healthy control 1 (Asian): 8 </br> Healthy control 2 (Caucasian): 12 </br> HIV (Caucasian): 6 </br> Hepatitis C, HCV (Caucasian): 8 </br> Hepatitis B, HBV (Asian): 32 </br> Total: 66 |
 
 ### Analysis Plan
-1. Sequence reads pre-processing
-    - trim adapters and low quality score sequences
-    - measure GC content of reads
-    - tool: Fastp
-
-2. Align reads to human reference genome hg19
-    - tool: HISAT2 or STAR
-3. Assemble and quantify reads
-    - tool: StringTie
-4. Differential gene expression analysis
-    - to compare NK cells gene expression between disease infected patients and healthy individuals
-    - tool: DESeq2/ edgeR
-5. Statistical testing
-
+| **Step** | **Description** |
+| ------------- | ------------- | 
+| 1. Data acquisition | Gather transcriptome raw reads from NCBI </br> Tool: SRA-toolkit |
+| 2. Sequence reads pre-processing | - trim adapters and low quality score sequences </br> - measure GC content of reads </br> - Tool: Fastp |
+| 3. Reads Alignment | - align reads to human reference genome hg19 </br> - Tool: HISAT2 / SAM Tools |
+| 4. Assembly | Assemble and quantify reads </br> - Tool: StringTie |
+| 5. Differential gene expression analysis | - to compare NK cells gene expression between disease infected patients and healthy individuals </br> - Tool: DESeq2/ edgeR |
+| 6. Statistical Testing |
 
