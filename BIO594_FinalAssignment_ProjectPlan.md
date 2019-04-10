@@ -38,13 +38,12 @@ Manipulation of NK cells seems to hold promise in efforts to improve organ trans
 | Location | Patients recruited from outpatient clinic of the Erasmus MC Rotterdam |
 | Number of subjects | Healthy control 1 (Asian): 8 </br> Healthy control 2 (Caucasian): 12 </br> HIV (Caucasian): 6 </br> Hepatitis C, HCV (Caucasian): 8 </br> Hepatitis B, HBV (Asian): 32 </br> Total: 66 |
 
-### Analysis Plan
+### Analysis Plan - Transcriptome Pipeline
 | **Step** | **Description** |
 | ------------- | ------------- | 
-| 1. Data acquisition | \> gather transcriptome raw reads from NCBI </br> Tool: SRA-toolkit |
+| 1. Data acquisition | - gather transcriptome raw reads from NCBI </br> Tool: SRA-toolkit |
 | 2. Sequence reads pre-processing | - trim adapters and low quality score sequences </br> - measure GC content of reads </br> - Tool: Fastp |
 | 3. Reads alignment | - align reads to human reference genome hg19 </br> - Tool: HISAT2 / SAM Tools |
-| 4. Assembly | Assemble and quantify reads </br> - Tool: StringTie |
-| 5. Differential gene expression analysis | - to compare NK cells gene expression between disease infected patients and healthy individuals </br> - Tool: DESeq2/ edgeR |
-| 6. Statistical Testing |
+| 4. Assembly | assemble and quantify reads </br> - Tool: StringTie |
+| 5. Differential gene expression analysis | - to compare NK cells gene expression between disease infected patients and healthy individuals </br> - statistical testing </br> - Tool: DESeq2/ edgeR |
 
