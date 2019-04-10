@@ -41,7 +41,7 @@ Manipulation of NK cells seems to hold promise in efforts to improve organ trans
 ### Analysis Plan
 | **Step** | **Description** |
 | ------------- | ------------- | 
-| 1. Data acquisition | > gather transcriptome raw reads from NCBI </br> Tool: SRA-toolkit |
+| 1. Data acquisition | \> gather transcriptome raw reads from NCBI </br> Tool: SRA-toolkit |
 | 2. Sequence reads pre-processing | - trim adapters and low quality score sequences </br> - measure GC content of reads </br> - Tool: Fastp |
 | 3. Reads alignment | - align reads to human reference genome hg19 </br> - Tool: HISAT2 / SAM Tools |
 | 4. Assembly | Assemble and quantify reads </br> - Tool: StringTie |
