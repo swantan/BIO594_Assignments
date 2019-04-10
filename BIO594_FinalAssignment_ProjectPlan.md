@@ -4,7 +4,7 @@
 
 There are two main types of immunity, i.e. innate and adaptive immunity. Innate immunity is usually regarded as our body first line defense mechanism. One of the components of human innate immune system is natural killer cells. </br>
 
->>**What are natural killer cells?**</br>
+>**What are natural killer cells?**</br>
 
 Natural killer cells, also known as NK cells, are large granular lymphocytes (a type of white blood cell). NK cells respond quickly to a wide variety of pathological challenges. They play a major role in fighting tumours or cancerous cells, as well as useful in combating virally infected cells [(Caligiuri, 2008)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2481557/). </br>
 
