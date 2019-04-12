@@ -12,8 +12,9 @@ wc -l Final.recode.vcf
 cd ..
 head TotalRawSNPs.vcf
 vcftools --vcf TotalRawSNPs.vcf  --max-missing 0.5 --maf 0.001 --minQ 20 --recode --recode-INFO-all --out TRS
+
+>output: TRS.log  TRS.recode.vcf
 ```
-> output: TRS.log  TRS.recode.vcf
 ```
 VCFtools - 0.1.15
 (C) Adam Auton and Anthony Marcketta 2009
