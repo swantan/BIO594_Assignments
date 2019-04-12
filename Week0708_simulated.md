@@ -354,3 +354,58 @@ Run BayeScan
 ```
 BayeScan2.1_linux64bits SNP.TRSdp5p05FHWEBS -nbp 30 -thin 20
 ```
+> get VCFtoOutlierOnly.sh
+```
+./VCFtoOutlierOnly.sh SNP.TRSdp5p05FHWEmaf05.recode.vcf SNP.TRSdp5p05FH_fst.txt  0.1 SNPTRS -SNPTRS.outlieronly --positions Outlier.list
+```
+```
+VCFtools - 0.1.15
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf SNP.TRSdp5p05FHWEmaf05.recode.vcf
+	--recode-INFO-all
+	--out .outlieronly
+	--positions Outlier.list
+	--recode
+
+After filtering, kept 80 out of 80 Individuals
+Outputting VCF file...
+After filtering, kept 3 out of a possible 861 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.15
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf SNP.TRSdp5p05FHWEmaf05.recode.vcf
+	--exclude-positions Outlier.list
+	--recode-INFO-all
+	--out .neutralonly
+	--recode
+
+After filtering, kept 80 out of 80 Individuals
+Outputting VCF file...
+After filtering, kept 858 out of a possible 861 Sites
+Run Time = 0.00 seconds
+```
+```
+ls -t | head
+
+SNPTRS.neutralonly.log
+SNPTRS.neutralonly.recode.vcf
+SNPTRS.outlieronly.log
+SNPTRS.outlieronly.recode.vcf
+Outlier.list
+BS.noheader
+totalloci
+VCFtoOutlierOnly.sh
+SNP.TRSdp5p05FH_fst.txt
+SNP.TRSdp5p05FH.sel
+```
+```
+mawk '!/#/' SNPTRS.neutralonly.recode.vcf | wc -l
+
+858
+```
+
