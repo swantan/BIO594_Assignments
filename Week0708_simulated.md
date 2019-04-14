@@ -1,6 +1,13 @@
+## Simulated dataset
+
+### Initialize working environment
 ```
 conda activate Week9.Ex
 cd home/stan/Week9/Week9.Ex/simulated/fasqfiles
+```
+
+### Call SNPs
+```
 dDocent
 wc -l Final.recode.vcf
 ```
@@ -8,6 +15,7 @@ wc -l Final.recode.vcf
 3042 Final.recode.vcf
 ```
 
+### Filtering SNPs
 ```
 cd ..
 head TotalRawSNPs.vcf
@@ -297,7 +305,7 @@ Processing population: PopD (20 inds)
 Outputting results of HWE test for filtered loci to 'filtered.hwe'
 Kept 1815 of a possible 1815 loci (filtered 0 loci)
 ```
-TO CLARIFY
+
 ```
 vcftools --vcf SNP.TRSdp5p05FHWE.recode.vcf --maf 0.05 --recode --recode-INFO-all --out SNP.TRSdp5p05FHWEmaf05
 ```
@@ -317,44 +325,10 @@ Outputting VCF file...
 After filtering, kept 861 out of a possible 1815 Sites
 Run Time = 1.00 seconds
 ```
-To convert the vcf file into a bayescan output
-```
-java -jar /usr/local/bin/PGDSpider2-cli.jar -inputfile SNP.TRSdp5p05FHWEmaf05.recode.vcf -outputfile SNP.TRSdp5p05FHWEBS -spid BSsnp.spid
-```
-Take a look at the output
-```
-less SNP.TRSdp5p05FHWEBS
-```
-```
-[loci]=861
 
-[populations]=4
+- get VCFtoOutlierOnly.sh
 
-[pop]=1
- 1      40      2       35 5 
- 2      40      2       2 38 
- 3      40      2       38 2 
- 4      40      2       36 4 
- 5      40      2       2 38 
- 6      40      2       37 3 
- 7      40      2       28 12 
- 8      38      2       36 2 
- 9      38      2       4 34 
- 10     38      2       21 17 
- 11     38      2       18 20 
- 12     40      2       33 7 
- 13     40      2       33 7 
- 14     40      2       38 2 
- 15     40      2       5 35 
- 16     40      2       35 5 
- 17     40      2       5 35 
- 18     38      2       6 32 
-```
-Run BayeScan
-```
-BayeScan2.1_linux64bits SNP.TRSdp5p05FHWEBS -nbp 30 -thin 20
-```
-> get VCFtoOutlierOnly.sh
+### Generate VCF file with only neutral SNPs
 ```
 ./VCFtoOutlierOnly.sh SNP.TRSdp5p05FHWEmaf05.recode.vcf SNP.TRSdp5p05FH_fst.txt  0.1 SNPTRS -SNPTRS.outlieronly --positions Outlier.list
 ```
@@ -389,6 +363,7 @@ Outputting VCF file...
 After filtering, kept 858 out of a possible 861 Sites
 Run Time = 0.00 seconds
 ```
+
 ```
 ls -t | head
 
@@ -409,3 +384,8 @@ mawk '!/#/' SNPTRS.neutralonly.recode.vcf | wc -l
 858
 ```
 
+### Run PCA and DAPC in R
+> R markdown
+
+### Run analyses from Silliman et al
+> R markdown
