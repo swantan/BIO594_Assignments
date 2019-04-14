@@ -1,4 +1,4 @@
-## Simulated dataset
+## Real dataset
 
 ### 1. Initialize working environment
 ```
@@ -45,3 +45,9 @@ paste <(seq 1 981) <(cut -f2,3 bf_environ.environ ) > bayenv.out
 
 cat <(echo -e "Locus\tBF1\tBF2") bayenv.out > bayenv.final
 ```
+
+### 4. PCA and DAPC using outlier free dataset
+> R markdown
+
+### 5. Analyses from Silliman et al
+> R markdown
