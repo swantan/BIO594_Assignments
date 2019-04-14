@@ -1,12 +1,12 @@
 ## Simulated dataset
 
-### Initialize working environment
+### 1. Initialize working environment
 ```
 conda activate Week9.Ex
 cd home/stan/Week9/Week9.Ex/simulated/fasqfiles
 ```
 
-### Call SNPs
+### 2. Call SNPs
 ```
 dDocent
 wc -l Final.recode.vcf
@@ -15,7 +15,7 @@ wc -l Final.recode.vcf
 3042 Final.recode.vcf
 ```
 
-### Filtering SNPs
+### 3. Filtering SNPs
 ```
 cd ..
 head TotalRawSNPs.vcf
@@ -328,7 +328,7 @@ Run Time = 1.00 seconds
 
 - get VCFtoOutlierOnly.sh
 
-### Generate VCF file with only neutral SNPs
+### 4. Generate VCF file with only neutral SNPs
 ```
 ./VCFtoOutlierOnly.sh SNP.TRSdp5p05FHWEmaf05.recode.vcf SNP.TRSdp5p05FH_fst.txt  0.1 SNPTRS -SNPTRS.outlieronly --positions Outlier.list
 ```
@@ -384,8 +384,8 @@ mawk '!/#/' SNPTRS.neutralonly.recode.vcf | wc -l
 858
 ```
 
-### Run PCA and DAPC in R
+### 5. Run PCA and DAPC in R
 > R markdown
 
-### Run analyses from Silliman et al
+### 6. Run analyses from Silliman et al
 > R markdown
