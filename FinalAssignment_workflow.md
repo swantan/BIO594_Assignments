@@ -1,6 +1,6 @@
 ## Select a subset of sample for analysis based on metadata
 Total: 8 groups with 40 samples in total (5 samples per each group)
-[Metadata](https://www.ncbi.nlm.nih.gov/Traces/study/?WebEnv=NCID_1_109652569_130.14.18.97_5555_1556579220_2883070983_0MetA0_S_HStore&query_key=1)
+[Metadata](https://www.ncbi.nlm.nih.gov/Traces/study/?WebEnv=NCID_1_109652569_130.14.18.97_5555_1556579220_2883070983_0MetA0_S_HStore&query_key=1){:target="_blank"}
 
 
 ## Step 1: Find the data on NCBI
@@ -31,10 +31,12 @@ With release 2.9.1 of `sra-tools` we have finally made available the tool `faste
 You can get more information about `fasterq-dump` in our Wiki at [https://github.com/ncbi/sra-tools/wiki/HowTo:-fasterq-dump](https://github.com/ncbi/sra-tools/wiki/HowTo:-fasterq-dump).
 
 
-use script to download SRA reads (40 at the same time)
+use script to download SRA reads (40 at the same time)</br>
+```
 nano dlSRAscript.sh 
 chmod a+x dlSRAscript.sh
 ./dlSRAscript.sh 
+```
 
 
 
