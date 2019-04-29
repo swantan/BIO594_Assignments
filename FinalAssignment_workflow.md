@@ -1,6 +1,6 @@
 ## Select a subset of sample for analysis based on metadata
 Total: 8 groups with 40 samples in total (5 samples per each group)
-[Metadata](https://www.ncbi.nlm.nih.gov/Traces/study/?WebEnv=NCID_1_109652569_130.14.18.97_5555_1556579220_2883070983_0MetA0_S_HStore&query_key=1){:target="_blank"}
+[Metadata](https://www.ncbi.nlm.nih.gov/Traces/study/?WebEnv=NCID_1_109652569_130.14.18.97_5555_1556579220_2883070983_0MetA0_S_HStore&query_key=1){:target="_blank" rel="noopener"}
 
 
 ## Step 1: Find the data on NCBI
