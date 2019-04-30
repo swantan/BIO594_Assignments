@@ -58,3 +58,9 @@ If the below situation occur, go to the respective folder and rm lock files
 wget --timestamping 'ftp://hgdownload.cse.ucsc.edu/goldenPath/hg19/chromosomes/*'
 ```
 
+### Quality check
+```
+fastp --in1 CASE_J03.F.fq.gz --in2 CASE_J03.R.fq.gz --out1 CASE_J03.R1.fq.gz --out2 CASE_J03.R2.fq.gz --cut_by_quality5 20 --cut_by_quality3 20 --cut_window_size 5 --cut_mean_quality 15 -q 15 -u 50 -j CASE_J03.json -h CASE_J03.html --detect_adapter_for_pe
+
+firefox CASE_J03.html
+```
