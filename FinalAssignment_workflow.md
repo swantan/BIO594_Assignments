@@ -52,6 +52,9 @@ If the below situation occur, go to the respective folder and rm lock files
 2019-04-30T00:44:22 prefetch.2.9.1 warn: lock exists while copying file - Lock file /home/stan/ncbi/public/sra/SRR8489641.sra.lock exists: download canceled
 ```
 
-
-
+### Download human genome hg19
+```
+(hg19)[http://hgdownload.cse.ucsc.edu/goldenpath/hg19/chromosomes/]
+wget --timestamping 'ftp://hgdownload.cse.ucsc.edu/goldenPath/hg19/chromosomes/*'
+```
 
