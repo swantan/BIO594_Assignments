@@ -64,3 +64,9 @@ fastp --in1 CASE_J03.F.fq.gz --in2 CASE_J03.R.fq.gz --out1 CASE_J03.R1.fq.gz --o
 
 firefox CASE_J03.html
 ```
+
+symlink
+```
+ln -s /RAID_STORAGE2/stan/FinalProject/PE/*.gz PE_fastq/
+ln -s /RAID_STORAGE2/stan/FinalProject/SE/*.gz SE_fastq/
+```
