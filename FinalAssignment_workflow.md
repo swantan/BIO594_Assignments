@@ -53,7 +53,7 @@ If the below situation occur, go to the respective folder and rm lock files
 ```
 
 ### Download human genome hg19
-(hg19)[http://hgdownload.cse.ucsc.edu/goldenpath/hg19/chromosomes/]
+[hg19](http://hgdownload.cse.ucsc.edu/goldenpath/hg19/chromosomes/)
 ```
 wget --timestamping 'ftp://hgdownload.cse.ucsc.edu/goldenPath/hg19/chromosomes/*'
 ```
