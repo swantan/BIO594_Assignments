@@ -68,7 +68,9 @@ nano fastp_PE.sh
 chmod a+x fastp_PE.sh
 
 for SE
-fastp -i ${i} -o ${i}.out -h ${i}.html -j ${i}.json -q 20 -P 100 -y 50 --adapter_sequence??
+nano fastp_SE.sh
+chmod a+x fastp_SE.sh
+fastp -i ${i} -o ${i}.out -h ${i}.html -j ${i}.json -q 20 -P 100 -y 50
 
 firefox CASE_J03.html
 ```
