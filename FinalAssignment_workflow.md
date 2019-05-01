@@ -60,7 +60,15 @@ wget --timestamping 'ftp://hgdownload.cse.ucsc.edu/goldenPath/hg19/chromosomes/*
 
 ### Quality check
 ```
-fastp --in1 CASE_J03.F.fq.gz --in2 CASE_J03.R.fq.gz --out1 CASE_J03.R1.fq.gz --out2 CASE_J03.R2.fq.gz --cut_by_quality5 20 --cut_by_quality3 20 --cut_window_size 5 --cut_mean_quality 15 -q 15 -u 50 -j CASE_J03.json -h CASE_J03.html --detect_adapter_for_pe
+for PE
+fastp -i rna1.F.fq.gz -I rna1.R.fq.gz -o out.rna1.F.fq.gz -O out.rna1.R.fq.gz -q 20 -P 100 -y 50 --detect_adapter_for_pe
+
+create loop to run through PE fq.gz
+nano fastp_PE.sh
+chmod a+x fastp_PE.sh
+
+for SE
+fastp -i ${i} -o ${i}.out -h ${i}.html -j ${i}.json -q 20 -P 100 -y 50 --adapter_sequence??
 
 firefox CASE_J03.html
 ```
@@ -70,3 +78,6 @@ symlink
 ln -s /RAID_STORAGE2/stan/FinalProject/PE/*.gz PE_fastq/
 ln -s /RAID_STORAGE2/stan/FinalProject/SE/*.gz SE_fastq/
 ```
+
+
+
