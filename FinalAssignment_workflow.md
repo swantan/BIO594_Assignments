@@ -61,7 +61,14 @@ wget --timestamping 'ftp://hgdownload.cse.ucsc.edu/goldenPath/hg19/chromosomes/*
 ### Quality check
 ```
 for PE
+1st run:
 fastp -i rna1.F.fq.gz -I rna1.R.fq.gz -o out.rna1.F.fq.gz -O out.rna1.R.fq.gz -q 20 -P 100 -y 50 --detect_adapter_for_pe
+
+2nd run:
+fastp -i ${i} -I $(echo ${i}|sed s/_1/_2/) -o ${i}.out -O $(echo ${i}|sed s/_1/_2/).out -h ${i}.html -j ${i}.json -f 10 -q 20 -P 100 -y 50 --detect_adapter_for_pe
+
+3rd run:
+fastp -i ${i} -I $(echo ${i}|sed s/_1/_2/) -o ${i}.out -O $(echo ${i}|sed s/_1/_2/).out -h ${i}.html -j ${i}.json -f 15 -q 20 -P 100 -y 50 --detect_adapter_for_pe
 
 create loop to run through PE fq.gz
 nano fastp_PE.sh
@@ -70,7 +77,14 @@ chmod a+x fastp_PE.sh
 for SE
 nano fastp_SE.sh
 chmod a+x fastp_SE.sh
+1st run:
 fastp -i ${i} -o ${i}.out -h ${i}.html -j ${i}.json -q 20 -P 100 -y 50
+
+2nd run:
+fastp -i ${i} -o ${i}.out -h ${i}.html -j ${i}.json -f 10 -q 20 -P 100 -y 50
+
+3rd run:
+fastp -i ${i} -o ${i}.out -h ${i}.html -j ${i}.json -f 15 -q 20 -P 100 -y 50
 
 firefox CASE_J03.html
 ```
