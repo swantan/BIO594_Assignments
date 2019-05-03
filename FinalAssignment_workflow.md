@@ -120,6 +120,7 @@ awk '{print $1 "\t0\t" $2}' genome.fa.fai > human_hg19.bed
 ```
 
 HISAT
+for PE
 ```
 nano HISAT.sh
 chmod a+x HISAT.sh 
@@ -148,3 +149,10 @@ Input files DNA, FASTA:
   /home/stan/FinalProject/genome/genome.fa
 Reading reference sizes
 ```
+
+for SE
+```
+hisat2 --dta -x $F/genome_hg19  -U ${i}  -S ${i}.sam
+```
+
+
