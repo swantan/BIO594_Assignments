@@ -52,19 +52,6 @@ If the below situation occur, go to the respective folder and rm lock files
 2019-04-30T00:44:22 prefetch.2.9.1 warn: lock exists while copying file - Lock file /home/stan/ncbi/public/sra/SRR8489641.sra.lock exists: download canceled
 ```
 
-### Download human genome hg19
-[hg19](http://hgdownload.cse.ucsc.edu/goldenpath/hg19/chromosomes/) - multiple files have to be concatenated into a single huge file
-```
-wget --timestamping 'ftp://hgdownload.cse.ucsc.edu/goldenPath/hg19/chromosomes/*'
-cat *fa.gz > genome.fa.gz
-zcat genome.fa.gz | grep -c ">"
-93
-zcat genome.fa.gz | grep ">"
-gunzip genome.fa.gz
-less genome.fa
-ln -s /RAID_STORAGE2/stan/FinalProject/genome.fa ./
-```
-
 ### Quality check
 ```
 for PE
@@ -102,5 +89,17 @@ ln -s /RAID_STORAGE2/stan/FinalProject/PE/*.gz PE_fastq/
 ln -s /RAID_STORAGE2/stan/FinalProject/SE/*.gz SE_fastq/
 ```
 
+### Download human genome hg19
+[hg19](http://hgdownload.cse.ucsc.edu/goldenpath/hg19/chromosomes/) - multiple files have to be concatenated into a single huge file
+```
+wget --timestamping 'ftp://hgdownload.cse.ucsc.edu/goldenPath/hg19/chromosomes/*'
+cat *fa.gz > genome.fa.gz
+zcat genome.fa.gz | grep -c ">"
+93
+zcat genome.fa.gz | grep ">"
+gunzip genome.fa.gz
+less genome.fa
+ln -s /RAID_STORAGE2/stan/FinalProject/genome.fa ./
+```
 
 
