@@ -120,4 +120,31 @@ awk '{print $1 "\t0\t" $2}' genome.fa.fai > human_hg19.bed
 ```
 
 HISAT
-copy 
+```
+nano HISAT.sh
+chmod a+x HISAT.sh 
+./HISAT.sh
+```
+
+```
+Settings:
+  Output files: "genome_hg19.*.ht2"
+  Line rate: 6 (line is 64 bytes)
+  Lines per side: 1 (side is 64 bytes)
+  Offset rate: 4 (one in 16)
+  FTable chars: 10
+  Strings: unpacked
+  Local offset rate: 3 (one in 8)
+  Local fTable chars: 6
+  Local sequence length: 57344
+  Local sequence overlap between two consecutive indexes: 1024
+  Endianness: little
+  Actual local endianness: little
+  Sanity checking: disabled
+  Assertions: disabled
+  Random seed: 0
+  Sizeofs: void*:8, int:4, long:8, size_t:8
+Input files DNA, FASTA:
+  /home/stan/FinalProject/genome/genome.fa
+Reading reference sizes
+```
