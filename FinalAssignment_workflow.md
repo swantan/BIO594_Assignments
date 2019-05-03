@@ -103,6 +103,21 @@ ln -s /RAID_STORAGE2/stan/FinalProject/genome.fa ./
 ```
 
 ### Read alignment to human genome
+transfer all required files
 ```
 conda install -c bioconda hisat2
+mkdir genome
+cp genome.fa ./genome
+cp PE_fastq/*.out genome/ &
+mkdir SE
+cp SE_fastq/*.out genome/SE/ &
 ```
+
+To get Gff Or Bed File For Hg19 Genome
+```
+samtools faidx genome.fa
+awk '{print $1 "\t0\t" $2}' genome.fa.fai > human_hg19.bed
+```
+
+HISAT
+copy 
