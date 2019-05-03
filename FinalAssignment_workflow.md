@@ -102,4 +102,7 @@ less genome.fa
 ln -s /RAID_STORAGE2/stan/FinalProject/genome.fa ./
 ```
 
-
+### Read alignment to human genome
+```
+conda install -c bioconda hisat2
+```
