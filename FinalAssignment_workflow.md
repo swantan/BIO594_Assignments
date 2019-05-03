@@ -53,9 +53,16 @@ If the below situation occur, go to the respective folder and rm lock files
 ```
 
 ### Download human genome hg19
-[hg19](http://hgdownload.cse.ucsc.edu/goldenpath/hg19/chromosomes/)
+[hg19](http://hgdownload.cse.ucsc.edu/goldenpath/hg19/chromosomes/) - multiple files have to be concatenated into a single huge file
 ```
 wget --timestamping 'ftp://hgdownload.cse.ucsc.edu/goldenPath/hg19/chromosomes/*'
+cat *fa.gz > genome.fa.gz
+zcat genome.fa.gz | grep -c ">"
+93
+zcat genome.fa.gz | grep ">"
+gunzip genome.fa.gz
+less genome.fa
+ln -s /RAID_STORAGE2/stan/FinalProject/genome.fa ./
 ```
 
 ### Quality check
@@ -67,7 +74,7 @@ fastp -i rna1.F.fq.gz -I rna1.R.fq.gz -o out.rna1.F.fq.gz -O out.rna1.R.fq.gz -q
 2nd run:
 fastp -i ${i} -I $(echo ${i}|sed s/_1/_2/) -o ${i}.out -O $(echo ${i}|sed s/_1/_2/).out -h ${i}.html -j ${i}.json -f 10 -q 20 -P 100 -y 50 --detect_adapter_for_pe
 
-3rd run:
+3rd run (TAKE THIS):
 fastp -i ${i} -I $(echo ${i}|sed s/_1/_2/) -o ${i}.out -O $(echo ${i}|sed s/_1/_2/).out -h ${i}.html -j ${i}.json -f 15 -q 20 -P 100 -y 50 --detect_adapter_for_pe
 
 create loop to run through PE fq.gz
@@ -83,7 +90,7 @@ fastp -i ${i} -o ${i}.out -h ${i}.html -j ${i}.json -q 20 -P 100 -y 50
 2nd run:
 fastp -i ${i} -o ${i}.out -h ${i}.html -j ${i}.json -f 10 -q 20 -P 100 -y 50
 
-3rd run:
+3rd run(TAKE THIS):
 fastp -i ${i} -o ${i}.out -h ${i}.html -j ${i}.json -f 15 -q 20 -P 100 -y 50
 
 firefox CASE_J03.html
