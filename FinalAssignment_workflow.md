@@ -176,3 +176,29 @@ nano stringtie_assembly.sh
 ./stringtie_assembly.sh &
 ```
 
+#StringTie Merge, will merge all GFF files and assemble transcripts into a non-redundant set of transcripts, after which re-run #StringTie with -e
+#create mergelist.txt in nano, names of all the GTF files created in the last step with each on its own line
+```
+ls *.gtf > mergelist.txt
+```
+#check to sure one file per line
+```
+cat mergelist.txt | grep ".gtf" -c
+```
+
+#Run StringTie merge, merge transcripts from all samples (across all experiments, not just for a single experiment)
+```
+stringtie --merge -A -G human_hg19.gff3 -o stringtie_merged.gtf mergelist.txt
+#-A here creates a gene table output with genomic locations and compiled information that I will need later to fetch gene sequences
+#FROM MANUAL: "If StringTie is run with the -A <gene_abund.tab> option, it returns a file containing gene abundances. "
+#-G is a flag saying to use the .gff annotation file
+```
+
+#gffcompare to compare how transcripts compare to reference annotation
+```
+gffcompare -r human_hg19.gff3 -G -o merged stringtie_merged.gtf
+# -o specifies prefix to use for output files
+# -r followed by the annotation file to use as a reference
+# merged.annotation.gtf tells you how well the predicted transcripts track to the reference annotation file
+# merged.stats file shows the sensitivity and precision statistics and total number for different features (genes, exons, transcripts)
+```
