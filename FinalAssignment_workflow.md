@@ -155,4 +155,14 @@ for SE
 hisat2 --dta -x $F/genome_hg19  -U ${i}  -S ${i}.sam
 ```
 
+check for .sam output for PE and SE
+move .sam in SE to genome folder
+
+### Convert SAM to BAM with SAMTools
+create script 
+nano SAMtoBAM.sh
+chmod a+x SAMtoBAM.sh
+
+
+
 
