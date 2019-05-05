@@ -113,13 +113,14 @@ mkdir SE
 cp SE_fastq/*.out genome/SE/ &
 ```
 
-To get Gff Or Bed File For Hg19 Genome
+### BED to gff3 conversion
 ```
-samtools faidx genome.fa
-awk '{print $1 "\t0\t" $2}' genome.fa.fai > human_hg19.bed
+# gene annotation file from http://genome.ucsc.edu/cgi-bin/hgTables?command=start
+wget 'http://genome.ucsc.edu/cgi-bin/hgTables?hgsid=724701577_xgSdmCwom3vIkGlRCA8JsVN5Cxow&boolshad.hgta_printCustomTrackHeaders=0&hgta_ctName=tb_knownGene&hgta_ctDesc=table+browser+query+on+knownGene&hgta_ctVis=pack&hgta_ctUrl=&fbQual=whole&fbUpBases=200&fbExonBases=0&fbIntronBases=0&fbDownBases=200&hgta_doGetBed=get+BED' -O "gene_anno_hg19.bed"
 
 #bed to gff3 conversion
 wget 'https://raw.githubusercontent.com/vipints/converters/master/gfftools/codebase/bed_to_gff3_converter.py'
+python bed_to_gff3_converter.py -q gene_anno_hg19.bed -o human_hg19.gff3
 ```
 
 HISAT
