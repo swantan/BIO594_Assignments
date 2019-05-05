@@ -163,10 +163,16 @@ check for .sam output for PE and SE
 move .sam in SE to genome folder
 
 ### Convert SAM to BAM with SAMTools
-create script 
+create script
+```
 nano SAMtoBAM.sh
 chmod a+x SAMtoBAM.sh
+```
 
-
-
+### StringTie installation
+```
+conda install -c bioconda stringtie
+nano stringtie_assembly.sh
+./stringtie_assembly.sh &
+```
 
