@@ -117,6 +117,9 @@ To get Gff Or Bed File For Hg19 Genome
 ```
 samtools faidx genome.fa
 awk '{print $1 "\t0\t" $2}' genome.fa.fai > human_hg19.bed
+
+#bed to gff3 conversion
+wget 'https://raw.githubusercontent.com/vipints/converters/master/gfftools/codebase/bed_to_gff3_converter.py'
 ```
 
 HISAT
