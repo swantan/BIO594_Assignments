@@ -217,3 +217,13 @@ nano re_estimate.sh
 chmod a+x re_estimate.sh
 ./re_estimate.sh
 ```
+
+Prepare StringTie output for use in DESeq2
+```
+nano prep_stringtieoutput.sh
+chmod a+x prep_stringtieoutput.sh
+./prep_stringtieoutput.sh
+
+wget 'https://ccb.jhu.edu/software/stringtie/dl/prepDE.py'
+python prepDE.py -i C_vir_sample_list.txt
+```
