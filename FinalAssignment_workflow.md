@@ -202,3 +202,11 @@ gffcompare -r human_hg19.gff3 -G -o merged stringtie_merged.gtf
 # merged.annotation.gtf tells you how well the predicted transcripts track to the reference annotation file
 # merged.stats file shows the sensitivity and precision statistics and total number for different features (genes, exons, transcripts)
 ```
+
+stringtie --merge -G human_hg19.gff3 -o stringtie_merged.gtf mergelist.txt
+gffcompare -r human_hg19.gff3 -G -o merged stringtie_merged.gtf
+
+(finalproject) [stan@KITT genome]$ gffcompare -r human_hg19.gff3 -G -o merged stringtie_merged.gtf
+  82960 reference transcripts loaded.
+  101 duplicate reference transcripts discarded.
+  148668 query transfrags loaded.
