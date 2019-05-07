@@ -210,3 +210,9 @@ gffcompare -r human_hg19.gff3 -G -o merged stringtie_merged.gtf
   82960 reference transcripts loaded.
   101 duplicate reference transcripts discarded.
   148668 query transfrags loaded.
+
+
+create a script to run re-estimation
+nano re_estimate.sh 
+chmod a+x re_estimate.sh
+./re_estimate.sh
