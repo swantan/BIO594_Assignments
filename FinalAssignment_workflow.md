@@ -188,7 +188,7 @@ cat mergelist.txt | grep ".gtf" -c
 
 #Run StringTie merge, merge transcripts from all samples (across all experiments, not just for a single experiment)
 ```
-stringtie --merge -A -G human_hg19.gff3 -o stringtie_merged.gtf mergelist.txt
+stringtie --merge -G human_hg19.gff3 -o stringtie_merged.gtf mergelist.txt
 #-A here creates a gene table output with genomic locations and compiled information that I will need later to fetch gene sequences
 #FROM MANUAL: "If StringTie is run with the -A <gene_abund.tab> option, it returns a file containing gene abundances. "
 #-G is a flag saying to use the .gff annotation file
@@ -196,6 +196,7 @@ stringtie --merge -A -G human_hg19.gff3 -o stringtie_merged.gtf mergelist.txt
 
 #gffcompare to compare how transcripts compare to reference annotation
 ```
+conda install gffcompare
 gffcompare -r human_hg19.gff3 -G -o merged stringtie_merged.gtf
 # -o specifies prefix to use for output files
 # -r followed by the annotation file to use as a reference
@@ -203,16 +204,16 @@ gffcompare -r human_hg19.gff3 -G -o merged stringtie_merged.gtf
 # merged.stats file shows the sensitivity and precision statistics and total number for different features (genes, exons, transcripts)
 ```
 
-stringtie --merge -G human_hg19.gff3 -o stringtie_merged.gtf mergelist.txt
-gffcompare -r human_hg19.gff3 -G -o merged stringtie_merged.gtf
-
+```
 (finalproject) [stan@KITT genome]$ gffcompare -r human_hg19.gff3 -G -o merged stringtie_merged.gtf
   82960 reference transcripts loaded.
   101 duplicate reference transcripts discarded.
   148668 query transfrags loaded.
-
+```
 
 create a script to run re-estimation
+```
 nano re_estimate.sh 
 chmod a+x re_estimate.sh
 ./re_estimate.sh
+```
