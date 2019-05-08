@@ -87,7 +87,30 @@ fastp -i ${i} -o ${i}.out -h ${i}.html -j ${i}.json -f 10 -q 20 -P 100 -y 50
 3rd run(TAKE THIS):
 fastp -i ${i} -o ${i}.out -h ${i}.html -j ${i}.json -f 15 -q 20 -P 100 -y 50
 
-firefox CASE_J03.html
+
+# use MultiQC to put together all Files
+#make new folder with all fastp files
+mkdir fastp_result
+ln -s PE_fastq/* ./fastp_result/
+ln -s SE_fastq/* ./fastp_result/
+cd fastp_result
+conda install -c bioconda multiqc
+multiqc .
+
+/home/stan/miniconda3/envs/finalproject/lib/python2.7/site-packages/multiqc/utils/config.py:45: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  configs = yaml.load(f)
+/home/stan/miniconda3/envs/finalproject/lib/python2.7/site-packages/multiqc/utils/config.py:51: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  sp = yaml.load(f)
+[INFO   ]         multiqc : This is MultiQC v1.7
+[INFO   ]         multiqc : Template    : default
+[INFO   ]         multiqc : Searching '.'
+Searching 180 files..  [#######################-------------]   63%  00:00:14
+
+
+
+# Export file to local folder so you can open it up with .html
+cd /Users/erinroberts/Documents/PHD_coursework_TA/Puritz_pop_gen
+scp -P XXXX XXXX@kitt.uri.edu:/home/eroberts/repos/BIO_594_2018/FinalAssignment/EMR_Final_Assignment/natural_pop_files/fastqc_results/multiqc_report.html .
 ```
 
 ### Download human genome hg19
