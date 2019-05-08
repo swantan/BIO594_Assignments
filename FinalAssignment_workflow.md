@@ -52,6 +52,13 @@ If the below situation occur, go to the respective folder and rm lock files
 2019-04-30T00:44:22 prefetch.2.9.1 warn: lock exists while copying file - Lock file /home/stan/ncbi/public/sra/SRR8489641.sra.lock exists: download canceled
 ```
 
+symlink
+```
+ln -s /RAID_STORAGE2/stan/FinalProject/PE/*.gz PE_fastq/
+ln -s /RAID_STORAGE2/stan/FinalProject/SE/*.gz SE_fastq/
+```
+
+
 ### Quality check
 ```
 for PE
@@ -81,12 +88,6 @@ fastp -i ${i} -o ${i}.out -h ${i}.html -j ${i}.json -f 10 -q 20 -P 100 -y 50
 fastp -i ${i} -o ${i}.out -h ${i}.html -j ${i}.json -f 15 -q 20 -P 100 -y 50
 
 firefox CASE_J03.html
-```
-
-symlink
-```
-ln -s /RAID_STORAGE2/stan/FinalProject/PE/*.gz PE_fastq/
-ln -s /RAID_STORAGE2/stan/FinalProject/SE/*.gz SE_fastq/
 ```
 
 ### Download human genome hg19
