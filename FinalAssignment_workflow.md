@@ -88,6 +88,10 @@ fastp -i ${i} -o ${i}.out -h ${i}.html -j ${i}.json -f 10 -q 20 -P 100 -y 50
 fastp -i ${i} -o ${i}.out -h ${i}.html -j ${i}.json -f 15 -q 20 -P 100 -y 50
 
 
+#Check quality score
+
+for i in *.fastq.gz; do fastqc $i; done
+
 # use MultiQC to put together all Files
 #make new folder with all fastp files
 mkdir fastp_result
