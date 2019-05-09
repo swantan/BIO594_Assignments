@@ -105,6 +105,9 @@ mkdir fastp_result
 ln -s PE_fastq/*.fastq.gz.out ./fastp_result/
 ln -s SE_fastq/*.fastq.gz.out ./fastp_result/
 
+awk '{print "/home/stan/FinalProject/genome/" $0;}' mergelist.txt > mergelist_edit.txt
+
+
 # Export file to local folder
 
 
