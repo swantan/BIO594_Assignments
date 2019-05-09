@@ -1,4 +1,8 @@
-## Select a subset of sample for analysis based on metadata
+## RNA-seq Analysis Workflow
+
+### Aim: To analyze differential expression of human NK cells in HIV, HCV and HBV patients
+
+Select a subset of sample for analysis based on metadata
 Total: 8 groups with 40 samples in total (5 samples per each group)
 [Metadata](https://www.ncbi.nlm.nih.gov/Traces/study/?WebEnv=NCID_1_109652569_130.14.18.97_5555_1556579220_2883070983_0MetA0_S_HStore&query_key=1)
 
