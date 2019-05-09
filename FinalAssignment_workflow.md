@@ -1,5 +1,4 @@
-## Aim: To analyze differential expression of human NK cells in HIV, HCV and HBV patients </br>
-## using RNA-seq Analysis Pipeline
+## Aim: To analyze differential expression of human NK cells in HIV, HCV and HBV patients </br> using RNA-seq Analysis Pipeline
 
 Select a subset of sample for analysis based on metadata
 Total: 8 groups with 40 samples in total (5 samples per each group)
