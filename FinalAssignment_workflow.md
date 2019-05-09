@@ -109,7 +109,7 @@ awk '{print "/home/stan/FinalProject/genome/" $0;}' mergelist.txt > mergelist_ed
 
 
 # Export file to local folder
-
+scp -r -P 2292 stan@kitt.uri.edu:/home/stan/FinalProject/fastqc/multiqc_report.html ./Downloads/
 
 ```
 
