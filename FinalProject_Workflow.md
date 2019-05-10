@@ -11,7 +11,7 @@
 - Obtain Accessions file and save it as 'SraAccList.txt' </br>
 ![Accessions List]()
 
-* Log onto kitt.uri.edu and prepare working environment
+- Log onto kitt.uri.edu and prepare working environment
 ```
 conda create -n finalproject
 conda activate finalproject
