@@ -1,5 +1,4 @@
-## Gene expression profiling of human NK cells in HIV, HCV and HBV patients
-> Overall Workflow Documentation
+## Documentation of Overall Workflow --> Gene expression profiling of human NK cells in HIV, HCV and HBV patients
 
 ### Aim: To quantify differential expression of human NK cells in HIV, HCV and HBV patients
 ### Approach: RNA-seq Analysis Pipeline
