@@ -12,7 +12,7 @@
 - Obtain Accession file and save it as *SraAccList.txt* </br>
 ![Accessions List]()
 
-- Log onto kitt.uri.edu and prepare working environment
+#### Log onto kitt.uri.edu and prepare working environment
 ```
 conda create -n finalproject
 conda activate finalproject
@@ -20,7 +20,7 @@ mkdir FinalProject
 cd FinalProject/
 ```
 
-- Note: There are paired-end reads (PE) and single-end reads (SE) in the total dataset. Hence, in the subsequent data processing steps, PE and SE will be dealt separately </br>
+#### Note: There are paired-end reads (PE) and single-end reads (SE) in the total dataset. Hence, in the subsequent data processing steps, PE and SE will be dealt separately
 - Create PE and SE accession based on *SraAccList.txt* 
 
 PE list
@@ -32,8 +32,9 @@ SE list
 for i in SRR8489621 SRR8489622 SRR8489623 SRR8489624 SRR8489625 SRR8489603 SRR8489604 SRR8489605 SRR8489606 SRR8489608 SRR8489648 SRR8489649 SRR8489650 SRR8489651 SRR8489652 SRR8489632 SRR8489633 SRR8489634 SRR8489635 SRR8489636 SRR8489640 SRR8489641 SRR8489642 SRR8489643 SRR8489644 SRR8489594 SRR8489595 SRR8489596 SRR8489597 SRR8489598; do echo $i > $i\_single.txt; done
 ```
 
-Download data via SRA toolkit
+#### Download data via SRA toolkit
 > Remember to check and install SRA toolkit, if it is not installed yet
+> To Note: Storage policy to avoid jam up the hard disk, hence, to switch working directory to ```/RAID_STORAGE2/stan/```
 ```
 conda install -c bioconda sra-tools
 sra-tools-2.9.1_1 
@@ -42,9 +43,9 @@ With release 2.9.1 of `sra-tools` we have finally made available the tool `faste
 
 You can get more information about `fasterq-dump` in our Wiki at [https://github.com/ncbi/sra-tools/wiki/HowTo:-fasterq-dump](https://github.com/ncbi/sra-tools/wiki/HowTo:-fasterq-dump).
 
-Storage policy - to avoid jam up the hard disk
+
 ```
-/RAID_STORAGE2/stan/
+
 ```
 - use --gzip flag
 
