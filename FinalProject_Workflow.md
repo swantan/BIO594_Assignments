@@ -5,10 +5,10 @@
 ### Approach: RNA-seq Analysis Pipeline
 
 ### Step 1: Data acquisition
-- Select a subset of sample for analysis based on metadata </br>
+- Select a subset of sample for analysis based on metadata (refer to *SRR_id.txt*) </br>
 - A total of 40 selected samples among 8 groups, 5 samples per each group (healthy_asian, healthy_caucasian, HIV, HCV, HBV Immune Tolerant (IT), HBV Immune Active (IA), HBV Inactive Carrier (IC), HBV Negative (ENEG)) </br>
 - Find the data on NCBI according to the sample IDs selected earlier: [SRA sites](https://www.ncbi.nlm.nih.gov/sra?linkname=bioproject_sra_all&from_uid=517165)
-- Obtain Accessions file and save it as 'SraAccList.txt' </br>
+- Obtain Accession file and save it as 'SraAccList.txt' </br>
 ![Accessions List]()
 
 - Log onto kitt.uri.edu and prepare working environment
@@ -19,7 +19,9 @@ mkdir FinalProject
 cd FinalProject/
 ```
 
-create SraAccList.txt
+- Note: There are paired-end reads (PE) and single-end reads (SE) in the total dataset. Hence, in the subsequent data processing steps, PE and SE will be dealt separately
+- Create PE and SE accession based on SraAccList.txt 
+> Note: 
 PE
 SE
 ```
