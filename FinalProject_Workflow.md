@@ -33,7 +33,7 @@ for i in SRR8489621 SRR8489622 SRR8489623 SRR8489624 SRR8489625 SRR8489603 SRR84
 ```
 
 #### Download data via SRA toolkit
-> Remember to check and install SRA toolkit, if it is not installed yet
+> Remember to check and install SRA toolkit, if it is not installed yet </br>
 > To Note: Storage policy to avoid jam up the hard disk, hence, to switch working directory to ```/RAID_STORAGE2/stan/```
 ```
 conda install -c bioconda sra-tools
@@ -43,13 +43,8 @@ With release 2.9.1 of `sra-tools` we have finally made available the tool `faste
 
 You can get more information about `fasterq-dump` in our Wiki at [https://github.com/ncbi/sra-tools/wiki/HowTo:-fasterq-dump](https://github.com/ncbi/sra-tools/wiki/HowTo:-fasterq-dump).
 
-
-```
-
-```
-- use --gzip flag
-
-use script to download SRA reads (40 at the same time)</br>
+#### Use script to download SRA reads (40 at the same time)
+> Note: script can be found in folder of respective step
 ```
 nano dlSRAscript.sh 
 chmod a+x dlSRAscript.sh
