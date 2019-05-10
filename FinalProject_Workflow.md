@@ -88,7 +88,7 @@ scp -r -P 2292 stan@kitt.uri.edu:/home/stan/FinalProject/fastqc/multiqc_report.h
 ```
 
 ##### Use fastp to preprocess and trim data
-> in this step, adapters were trimmed as well as low quality score sequences 
+> In this step, adapters were trimmed as well as low quality score sequences 
 
 for PE
 ```
@@ -123,8 +123,8 @@ fastp -i ${i} -o ${i}.out -h ${i}.html -j ${i}.json -f 15 -q 20 -P 100 -y 50
 ### Step 3: Reads alignment
 
 ##### First of all, to download human genome [hg19](http://hgdownload.cse.ucsc.edu/goldenpath/hg19/chromosomes/) </br>
-> Again, be aware of storage policy, perform this step in the designated directory, i.e. `/RAID_STORAGE2/stan/`
-> multiple files have to be concatenated into a single huge file
+> Again, be aware of storage policy, perform this step in the designated directory, i.e. `/RAID_STORAGE2/stan/` </br>
+> Multiple files have to be concatenated into a single huge file
 ```
 wget --timestamping 'ftp://hgdownload.cse.ucsc.edu/goldenPath/hg19/chromosomes/*'
 cat *fa.gz > genome.fa.gz
@@ -139,7 +139,9 @@ ln -s /RAID_STORAGE2/stan/FinalProject/genome.fa ./
 ```
 
 ##### Read alignment to human genome
-transfer all required files
+> Perform in original working directory </br>
+> In this step, HISAT2 and StringTie will be used, hence, make sure to do installation
+> A genome annotation file will be needed in StringTie, make sure to get this file prior running StringTie
 ```
 conda install -c bioconda hisat2
 mkdir genome
@@ -149,18 +151,10 @@ mkdir SE
 cp SE_fastq/*.out genome/SE/ &
 ```
 
-### BED to gff3 conversion
-```
-# gene annotation file from http://genome.ucsc.edu/cgi-bin/hgTables?command=start
-wget 'http://genome.ucsc.edu/cgi-bin/hgTables?hgsid=724701577_xgSdmCwom3vIkGlRCA8JsVN5Cxow&boolshad.hgta_printCustomTrackHeaders=0&hgta_ctName=tb_knownGene&hgta_ctDesc=table+browser+query+on+knownGene&hgta_ctVis=pack&hgta_ctUrl=&fbQual=whole&fbUpBases=200&fbExonBases=0&fbIntronBases=0&fbDownBases=200&hgta_doGetBed=get+BED' -O "gene_anno_hg19.bed"
+##### HISAT2
+This tool is to build an index of the reference genome and align reads to it
 
-#bed to gff3 conversion
-wget 'https://raw.githubusercontent.com/vipints/converters/master/gfftools/codebase/bed_to_gff3_converter.py'
-python bed_to_gff3_converter.py -q gene_anno_hg19.bed -o human_hg19.gff3
-```
-
-HISAT
-for PE
+For PE
 ```
 nano HISAT.sh
 chmod a+x HISAT.sh 
@@ -168,6 +162,7 @@ chmod a+x HISAT.sh
 ```
 
 ```
+#expected output
 Settings:
   Output files: "genome_hg19.*.ht2"
   Line rate: 6 (line is 64 bytes)
@@ -190,19 +185,29 @@ Input files DNA, FASTA:
 Reading reference sizes
 ```
 
-for SE
+For SE, remember to modify HISAT.sh script to accomodate single end reads
 ```
 hisat2 --dta -x $F/genome_hg19  -U ${i}  -S ${i}.sam
 ```
 
-check for .sam output for PE and SE
-move .sam in SE to genome folder
+> Check for .sam output for PE and SE
+> Move `*.sam` files in SE to `genome/` folder
 
 ### Convert SAM to BAM with SAMTools
 create script
 ```
 nano SAMtoBAM.sh
 chmod a+x SAMtoBAM.sh
+```
+
+### BED to gff3 conversion
+```
+# gene annotation file from http://genome.ucsc.edu/cgi-bin/hgTables?command=start
+wget 'http://genome.ucsc.edu/cgi-bin/hgTables?hgsid=724701577_xgSdmCwom3vIkGlRCA8JsVN5Cxow&boolshad.hgta_printCustomTrackHeaders=0&hgta_ctName=tb_knownGene&hgta_ctDesc=table+browser+query+on+knownGene&hgta_ctVis=pack&hgta_ctUrl=&fbQual=whole&fbUpBases=200&fbExonBases=0&fbIntronBases=0&fbDownBases=200&hgta_doGetBed=get+BED' -O "gene_anno_hg19.bed"
+
+#bed to gff3 conversion
+wget 'https://raw.githubusercontent.com/vipints/converters/master/gfftools/codebase/bed_to_gff3_converter.py'
+python bed_to_gff3_converter.py -q gene_anno_hg19.bed -o human_hg19.gff3
 ```
 
 ### StringTie installation
