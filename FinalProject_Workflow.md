@@ -1,17 +1,14 @@
-## Overall workflow of human NK cells gene expression profiling in HIV, HCV and HBV patients
+# Gene expression profiling of human NK cells in HIV, HCV and HBV patients
+## Workflow Documentation
 
 ### Aim: To quantify differential expression of human NK cells in HIV, HCV and HBV patients
 ### Approach: RNA-seq Analysis Pipeline
 
 ### Step 1: Data acquisition
-> Select a subset of sample for analysis based on metadata </br>
-> Total dataset: 8 groups (healthy_asian, healthy_caucasian, HIV, HCV, HBV Immune Tolerant (IT), </br> HBV 
-Immune Active (IA), HBV Inactive Carrier (IC), HBV Negative (ENEG)) with 40 samples in total (5 samples per each group)
-[SRA sites](https://www.ncbi.nlm.nih.gov/sra?linkname=bioproject_sra_all&from_uid=517165)
-
-Find the data on NCBI
-> 
-> Input to obtain file: Accessions in a .txt 
+- Select a subset of sample for analysis based on metadata </br>
+- Total dataset: 40 samples with 8 groups, 5 samples per each group (healthy_asian, healthy_caucasian, HIV, HCV, HBV Immune Tolerant (IT), HBV Immune Active (IA), HBV Inactive Carrier (IC), HBV Negative (ENEG)) </br>
+- Find the data on NCBI: [SRA sites](https://www.ncbi.nlm.nih.gov/sra?linkname=bioproject_sra_all&from_uid=517165)
+- Input to obtain file: Accessions in a .txt 
 
 ```
 conda create -n finalproject
