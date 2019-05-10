@@ -12,7 +12,7 @@
 - Obtain Accession file and save it as *SraAccList.txt* </br>
 ![Accessions List]()
 
-#### Log onto kitt.uri.edu and prepare working environment
+##### Log onto kitt.uri.edu and prepare working environment
 ```
 conda create -n finalproject
 conda activate finalproject
@@ -20,7 +20,7 @@ mkdir FinalProject
 cd FinalProject/
 ```
 
-#### Note: There are paired-end reads (PE) and single-end reads (SE) in the total dataset. Hence, in the subsequent data processing steps, PE and SE will be dealt separately
+##### Note: There are paired-end reads (PE) and single-end reads (SE) in the total dataset. Hence, in the subsequent data processing steps, PE and SE will be dealt separately
 - Create PE and SE accession based on *SraAccList.txt* 
 
 PE list
@@ -32,9 +32,9 @@ SE list
 for i in SRR8489621 SRR8489622 SRR8489623 SRR8489624 SRR8489625 SRR8489603 SRR8489604 SRR8489605 SRR8489606 SRR8489608 SRR8489648 SRR8489649 SRR8489650 SRR8489651 SRR8489652 SRR8489632 SRR8489633 SRR8489634 SRR8489635 SRR8489636 SRR8489640 SRR8489641 SRR8489642 SRR8489643 SRR8489644 SRR8489594 SRR8489595 SRR8489596 SRR8489597 SRR8489598; do echo $i > $i\_single.txt; done
 ```
 
-#### Download data via SRA toolkit
+##### Download data via SRA toolkit
 > Remember to check and install SRA toolkit, if it is not installed yet </br>
-> To Note: Storage policy to avoid jam up the hard disk, hence, to switch working directory to ```/RAID_STORAGE2/stan/```
+> TO NOTE: Storage policy to avoid jam up the hard disk, hence, to switch working directory to ```/RAID_STORAGE2/stan/```
 ```
 conda install -c bioconda sra-tools
 sra-tools-2.9.1_1 
@@ -43,28 +43,51 @@ With release 2.9.1 of `sra-tools` we have finally made available the tool `faste
 
 You can get more information about `fasterq-dump` in our Wiki at [https://github.com/ncbi/sra-tools/wiki/HowTo:-fasterq-dump](https://github.com/ncbi/sra-tools/wiki/HowTo:-fasterq-dump).
 
-#### Use script to download SRA reads (40 at the same time)
-> Note: script can be found in folder of respective step
+##### Use script to download SRA reads (40 at the same time)
+> Note: script can be found in folder of respective step </br>
+> This downloading process may take long
 ```
 nano dlSRAscript.sh 
 chmod a+x dlSRAscript.sh
 ./dlSRAscript.sh 
 ```
 
-If the below situation occur, go to the respective folder and rm lock files
+> If the below situation occur, go to the respective folder and rm lock files
 ```
 2019-04-30T00:44:22 prefetch.2.9.1: 1) Downloading 'SRR8489641'...
 2019-04-30T00:44:22 prefetch.2.9.1 warn: lock exists while copying file - Lock file /home/stan/ncbi/public/sra/SRR8489641.sra.lock exists: download canceled
 ```
-
-symlink
+##### After done with downloading SRA reads, symlink all the fastq.gz files to original working directory
 ```
+cd /home/stan/FinalProject
+mkdir PE_fastq
+mkdir SE_fastq
 ln -s /RAID_STORAGE2/stan/FinalProject/PE/*.gz PE_fastq/
 ln -s /RAID_STORAGE2/stan/FinalProject/SE/*.gz SE_fastq/
 ```
 
+### Step 2: Quality check and sequence reads pre-processing
 
-### Quality check
+##### Quality check
+```
+#Check quality score
+
+mkdir fastqc
+cd fastqc/
+ln -s ../PE_fastq/*.fastq.gz ./
+ln -s ../E_fastq/*.fastq.gz ./
+
+for i in *.fastq.gz; do fastqc $i; done &
+
+# use MultiQC to put together all Files
+conda install -c bioconda multiqc
+multiqc .
+
+# Export file to local folder
+scp -r -P 2292 stan@kitt.uri.edu:/home/stan/FinalProject/fastqc/multiqc_report.html ./Downloads/
+```
+
+
 ```
 for PE
 1st run:
@@ -93,18 +116,7 @@ fastp -i ${i} -o ${i}.out -h ${i}.html -j ${i}.json -f 10 -q 20 -P 100 -y 50
 fastp -i ${i} -o ${i}.out -h ${i}.html -j ${i}.json -f 15 -q 20 -P 100 -y 50
 
 
-#Check quality score
 
-mkdir mkdir fastqc
-cd fastqc/
-ln -s ../PE_fastq/*.fastq.gz ./
-ln -s ../E_fastq/*.fastq.gz ./
-
-for i in *.fastq.gz; do fastqc $i; done &
-
-# use MultiQC to put together all Files
-conda install -c bioconda multiqc
-multiqc .
 
 mkdir fastp_result
 ln -s PE_fastq/*.fastq.gz.out ./fastp_result/
@@ -113,8 +125,7 @@ ln -s SE_fastq/*.fastq.gz.out ./fastp_result/
 awk '{print "/home/stan/FinalProject/genome/" $0;}' mergelist.txt > mergelist_edit.txt
 
 
-# Export file to local folder
-scp -r -P 2292 stan@kitt.uri.edu:/home/stan/FinalProject/fastqc/multiqc_report.html ./Downloads/
+
 
 ```
 
