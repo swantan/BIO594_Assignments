@@ -1,5 +1,7 @@
-## Aim: To quantify differential expression of human NK cells in HIV, HCV and HBV patients
-## Approach: RNA-seq Analysis Pipeline
+## Overall workflow of human NK cells gene expression profiling in HIV, HCV and HBV patients
+
+### Aim: To quantify differential expression of human NK cells in HIV, HCV and HBV patients
+### Approach: RNA-seq Analysis Pipeline
 
 ### Step 1: Data acquisition
 > Select a subset of sample for analysis based on metadata
