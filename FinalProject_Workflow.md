@@ -1,6 +1,7 @@
 ## Documentation of Overall Workflow </br> 
 > Gene expression profiling of human NK cells in HIV, HCV and HBV patients </br>
 > This documentation of workflow is based on the analysis steps in project plan
+> Most of the analysis steps were adapted from [Erin Robert's tutorial] (https://github.com/erinroberts/apoptosis_data_pipeline/blob/master/Streamlined%20Pipeline%20Tutorial/Apoptosis_Pipeline_Tutorial_with_Reduced_Dataset.md)
 
 ### Aim: To quantify differential expression of human NK cells in HIV, HCV and HBV patients
 ### Approach: RNA-seq Analysis Pipeline
@@ -140,8 +141,7 @@ ln -s /RAID_STORAGE2/stan/FinalProject/genome.fa ./
 
 ##### Read alignment to human genome
 > Perform in original working directory </br>
-> In this step, HISAT2 and StringTie will be used, hence, make sure to do installation
-> A genome annotation file will be needed in StringTie, make sure to get this file prior running StringTie
+> In this step, HISAT2 and SAM Tool will be used, hence, make sure to do installation
 ```
 conda install -c bioconda hisat2
 mkdir genome
@@ -151,9 +151,7 @@ mkdir SE
 cp SE_fastq/*.out genome/SE/ &
 ```
 
-##### HISAT2
-This tool is to build an index of the reference genome and align reads to it
-
+##### HISAT2 - This tool is to build an index of the reference genome and align reads to it
 For PE
 ```
 nano HISAT.sh
@@ -193,14 +191,17 @@ hisat2 --dta -x $F/genome_hg19  -U ${i}  -S ${i}.sam
 > Check for .sam output for PE and SE
 > Move `*.sam` files in SE to `genome/` folder
 
-### Convert SAM to BAM with SAMTools
-create script
+##### Convert SAM to BAM with SAMTools
+Create script to automate
 ```
 nano SAMtoBAM.sh
 chmod a+x SAMtoBAM.sh
 ```
 
-### BED to gff3 conversion
+### Step 4: Assembly and quantify reads using StringTie
+> A genome annotation file will be needed in StringTie, make sure to get this file prior running StringTie
+
+##### To get genome annotation file - BED to gff3 conversion
 ```
 # gene annotation file from http://genome.ucsc.edu/cgi-bin/hgTables?command=start
 wget 'http://genome.ucsc.edu/cgi-bin/hgTables?hgsid=724701577_xgSdmCwom3vIkGlRCA8JsVN5Cxow&boolshad.hgta_printCustomTrackHeaders=0&hgta_ctName=tb_knownGene&hgta_ctDesc=table+browser+query+on+knownGene&hgta_ctVis=pack&hgta_ctUrl=&fbQual=whole&fbUpBases=200&fbExonBases=0&fbIntronBases=0&fbDownBases=200&hgta_doGetBed=get+BED' -O "gene_anno_hg19.bed"
@@ -210,32 +211,33 @@ wget 'https://raw.githubusercontent.com/vipints/converters/master/gfftools/codeb
 python bed_to_gff3_converter.py -q gene_anno_hg19.bed -o human_hg19.gff3
 ```
 
-### StringTie installation
+##### Assemble reads to the reference annotation
 ```
+#Start with installation
 conda install -c bioconda stringtie
+
+#create script to automate
 nano stringtie_assembly.sh
 ./stringtie_assembly.sh &
-```
 
 #StringTie Merge, will merge all GFF files and assemble transcripts into a non-redundant set of transcripts, after which re-run #StringTie with -e
 #create mergelist.txt in nano, names of all the GTF files created in the last step with each on its own line
-```
+
 ls *.gtf > mergelist.txt
-```
+
 #check to sure one file per line
-```
+
 cat mergelist.txt | grep ".gtf" -c
 ```
 
-#Run StringTie merge, merge transcripts from all samples (across all experiments, not just for a single experiment)
+##### Run StringTie merge, merge transcripts from all samples (across all experiments, not just for a single experiment)
 ```
 stringtie --merge -G human_hg19.gff3 -o stringtie_merged.gtf mergelist.txt
-#-A here creates a gene table output with genomic locations and compiled information that I will need later to fetch gene sequences
 #FROM MANUAL: "If StringTie is run with the -A <gene_abund.tab> option, it returns a file containing gene abundances. "
 #-G is a flag saying to use the .gff annotation file
 ```
 
-#gffcompare to compare how transcripts compare to reference annotation
+##### gffcompare to compare how transcripts compare to reference annotation
 ```
 conda install gffcompare
 gffcompare -r human_hg19.gff3 -G -o merged stringtie_merged.gtf
@@ -246,20 +248,21 @@ gffcompare -r human_hg19.gff3 -G -o merged stringtie_merged.gtf
 ```
 
 ```
+#expected output
 (finalproject) [stan@KITT genome]$ gffcompare -r human_hg19.gff3 -G -o merged stringtie_merged.gtf
   82960 reference transcripts loaded.
   101 duplicate reference transcripts discarded.
   148668 query transfrags loaded.
 ```
 
-create a script to run re-estimation
+##### Create a script to run re-estimation
 ```
 nano re_estimate.sh 
 chmod a+x re_estimate.sh
 ./re_estimate.sh
 ```
 
-Prepare StringTie output for use in DESeq2
+##### Prepare StringTie output for use in DESeq2
 ```
 nano prep_stringtieoutput.sh
 chmod a+x prep_stringtieoutput.sh
