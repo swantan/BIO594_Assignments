@@ -1,7 +1,7 @@
 ## Documentation of Overall Workflow </br> 
 > Gene expression profiling of human NK cells in HIV, HCV and HBV patients </br>
-> This documentation of workflow is based on the analysis steps in project plan
-> Most of the analysis steps were adapted from [Erin Robert's tutorial] (https://github.com/erinroberts/apoptosis_data_pipeline/blob/master/Streamlined%20Pipeline%20Tutorial/Apoptosis_Pipeline_Tutorial_with_Reduced_Dataset.md)
+> This documentation of workflow is based on the analysis steps in project plan </br>
+> Most of the analysis steps were adapted from [Erin Robert's tutorial](https://github.com/erinroberts/apoptosis_data_pipeline/blob/master/Streamlined%20Pipeline%20Tutorial/Apoptosis_Pipeline_Tutorial_with_Reduced_Dataset.md)
 
 ### Aim: To quantify differential expression of human NK cells in HIV, HCV and HBV patients
 ### Approach: RNA-seq Analysis Pipeline
