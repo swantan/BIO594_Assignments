@@ -1,5 +1,6 @@
 ## Documentation of Overall Workflow </br> 
-> Gene expression profiling of human NK cells in HIV, HCV and HBV patients
+> Gene expression profiling of human NK cells in HIV, HCV and HBV patients </br>
+> This documentation of workflow is based on the analysis steps in project plan
 
 ### Aim: To quantify differential expression of human NK cells in HIV, HCV and HBV patients
 ### Approach: RNA-seq Analysis Pipeline
@@ -8,7 +9,7 @@
 - Select a subset of sample for analysis based on metadata (refer to *SRR_id.txt*) </br>
 - A total of 40 selected samples among 8 groups, 5 samples per each group (healthy_asian, healthy_caucasian, HIV, HCV, HBV Immune Tolerant (IT), HBV Immune Active (IA), HBV Inactive Carrier (IC), HBV Negative (ENEG)) </br>
 - Find the data on NCBI according to the sample IDs selected earlier: [SRA sites](https://www.ncbi.nlm.nih.gov/sra?linkname=bioproject_sra_all&from_uid=517165)
-- Obtain Accession file and save it as 'SraAccList.txt' </br>
+- Obtain Accession file and save it as *SraAccList.txt* </br>
 ![Accessions List]()
 
 - Log onto kitt.uri.edu and prepare working environment
@@ -19,14 +20,15 @@ mkdir FinalProject
 cd FinalProject/
 ```
 
-- Note: There are paired-end reads (PE) and single-end reads (SE) in the total dataset. Hence, in the subsequent data processing steps, PE and SE will be dealt separately
-- Create PE and SE accession based on SraAccList.txt 
-> Note: 
+- Note: There are paired-end reads (PE) and single-end reads (SE) in the total dataset. Hence, in the subsequent data processing steps, PE and SE will be dealt separately </br>
+- Create PE and SE accession based on *SraAccList.txt* 
+
 PE
-SE
 ```
 for i in SRR8489620 SRR8489619 SRR8489618 SRR8489617 SRR8489614 SRR8489627 SRR8489626 SRR8489628 SRR8489629 SRR8489630; do echo $i > $i\_paired.txt; done
-
+```
+SE
+```
 for i in SRR8489621 SRR8489622 SRR8489623 SRR8489624 SRR8489625 SRR8489603 SRR8489604 SRR8489605 SRR8489606 SRR8489608 SRR8489648 SRR8489649 SRR8489650 SRR8489651 SRR8489652 SRR8489632 SRR8489633 SRR8489634 SRR8489635 SRR8489636 SRR8489640 SRR8489641 SRR8489642 SRR8489643 SRR8489644 SRR8489594 SRR8489595 SRR8489596 SRR8489597 SRR8489598; do echo $i > $i\_single.txt; done
 ```
 
