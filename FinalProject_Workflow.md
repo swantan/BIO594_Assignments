@@ -8,9 +8,10 @@
 - Select a subset of sample for analysis based on metadata </br>
 - A total of 40 selected samples among 8 groups, 5 samples per each group (healthy_asian, healthy_caucasian, HIV, HCV, HBV Immune Tolerant (IT), HBV Immune Active (IA), HBV Inactive Carrier (IC), HBV Negative (ENEG)) </br>
 - Find the data on NCBI according to the sample IDs selected earlier: [SRA sites](https://www.ncbi.nlm.nih.gov/sra?linkname=bioproject_sra_all&from_uid=517165)
-- Obtain Accessions file and save it as 'SraAccList.txt' 
+- Obtain Accessions file and save it as 'SraAccList.txt' </br>
 ![Accessions List]()
 
+* Log onto kitt.uri.edu and prepare working environment
 ```
 conda create -n finalproject
 conda activate finalproject
