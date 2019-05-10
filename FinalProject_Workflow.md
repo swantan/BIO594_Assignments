@@ -4,12 +4,13 @@
 ### Approach: RNA-seq Analysis Pipeline
 
 ### Step 1: Data acquisition
-> Select a subset of sample for analysis based on metadata
-> Total: 8 groups with 40 samples in total (5 samples per each group)
-[Metadata](https://www.ncbi.nlm.nih.gov/Traces/study/?WebEnv=NCID_1_109652569_130.14.18.97_5555_1556579220_2883070983_0MetA0_S_HStore&query_key=1)
+> Select a subset of sample for analysis based on metadata <\br>
+> Total dataset: 8 groups (healthy_asian, healthy_caucasian, HIV, HCV, HBV Immune Tolerant (IT), <\br> HBV 
+Immune Active (IA), HBV Inactive Carrier (IC), HBV Negative (ENEG)) with 40 samples in total (5 samples per each group)
+[SRA sites](https://www.ncbi.nlm.nih.gov/sra?linkname=bioproject_sra_all&from_uid=517165)
 
 Find the data on NCBI
-> [SRA sites](https://www.ncbi.nlm.nih.gov/sra?linkname=bioproject_sra_all&from_uid=517165)
+> 
 > Input to obtain file: Accessions in a .txt 
 
 ```
