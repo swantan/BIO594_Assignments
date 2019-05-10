@@ -34,7 +34,7 @@ for i in SRR8489621 SRR8489622 SRR8489623 SRR8489624 SRR8489625 SRR8489603 SRR84
 
 ##### Download data via SRA toolkit
 > Remember to check and install SRA toolkit, if it is not installed yet </br>
-> TO NOTE: Storage policy to avoid jam up the hard disk, hence, to switch working directory to ```/RAID_STORAGE2/stan/```
+> TO NOTE: Storage policy to avoid jam up the hard disk, hence, to switch working directory to `/RAID_STORAGE2/stan/`
 ```
 conda install -c bioconda sra-tools
 sra-tools-2.9.1_1 
@@ -87,50 +87,44 @@ multiqc .
 scp -r -P 2292 stan@kitt.uri.edu:/home/stan/FinalProject/fastqc/multiqc_report.html ./Downloads/
 ```
 
+##### Use fastp to preprocess and trim data
+> in this step, adapters were trimmed as well as low quality score sequences 
 
-```
 for PE
-1st run:
-fastp -i rna1.F.fq.gz -I rna1.R.fq.gz -o out.rna1.F.fq.gz -O out.rna1.R.fq.gz -q 20 -P 100 -y 50 --detect_adapter_for_pe
-
-2nd run:
-fastp -i ${i} -I $(echo ${i}|sed s/_1/_2/) -o ${i}.out -O $(echo ${i}|sed s/_1/_2/).out -h ${i}.html -j ${i}.json -f 10 -q 20 -P 100 -y 50 --detect_adapter_for_pe
-
-3rd run (TAKE THIS):
-fastp -i ${i} -I $(echo ${i}|sed s/_1/_2/) -o ${i}.out -O $(echo ${i}|sed s/_1/_2/).out -h ${i}.html -j ${i}.json -f 15 -q 20 -P 100 -y 50 --detect_adapter_for_pe
-
-create loop to run through PE fq.gz
+```
+#create loop to run through PE fq.gz
 nano fastp_PE.sh
 chmod a+x fastp_PE.sh
 
+#1st run:
+#fastp -i rna1.F.fq.gz -I rna1.R.fq.gz -o out.rna1.F.fq.gz -O out.rna1.R.fq.gz -q 20 -P 100 -y 50 --detect_adapter_for_pe
+
+#2nd run:
+#fastp -i ${i} -I $(echo ${i}|sed s/_1/_2/) -o ${i}.out -O $(echo ${i}|sed s/_1/_2/).out -h ${i}.html -j ${i}.json -f 10 -q 20 -P 100 -y #50 --detect_adapter_for_pe
+
+3rd run (TAKE THIS):
+fastp -i ${i} -I $(echo ${i}|sed s/_1/_2/) -o ${i}.out -O $(echo ${i}|sed s/_1/_2/).out -h ${i}.html -j ${i}.json -f 15 -q 20 -P 100 -y 50 --detect_adapter_for_pe
+```
 for SE
+```
 nano fastp_SE.sh
 chmod a+x fastp_SE.sh
-1st run:
-fastp -i ${i} -o ${i}.out -h ${i}.html -j ${i}.json -q 20 -P 100 -y 50
+#1st run:
+#fastp -i ${i} -o ${i}.out -h ${i}.html -j ${i}.json -q 20 -P 100 -y 50
 
-2nd run:
-fastp -i ${i} -o ${i}.out -h ${i}.html -j ${i}.json -f 10 -q 20 -P 100 -y 50
+#2nd run:
+#fastp -i ${i} -o ${i}.out -h ${i}.html -j ${i}.json -f 10 -q 20 -P 100 -y 50
 
 3rd run(TAKE THIS):
 fastp -i ${i} -o ${i}.out -h ${i}.html -j ${i}.json -f 15 -q 20 -P 100 -y 50
-
-
-
-
-mkdir fastp_result
-ln -s PE_fastq/*.fastq.gz.out ./fastp_result/
-ln -s SE_fastq/*.fastq.gz.out ./fastp_result/
-
-awk '{print "/home/stan/FinalProject/genome/" $0;}' mergelist.txt > mergelist_edit.txt
-
-
-
-
 ```
+> An example of fastp html reports are located in the folder of this step
 
-### Download human genome hg19
-[hg19](http://hgdownload.cse.ucsc.edu/goldenpath/hg19/chromosomes/) - multiple files have to be concatenated into a single huge file
+### Step 3: Reads alignment
+
+##### First of all, to download human genome [hg19](http://hgdownload.cse.ucsc.edu/goldenpath/hg19/chromosomes/) </br>
+> Again, be aware of storage policy, perform this step in the designated directory, i.e. `/RAID_STORAGE2/stan/`
+> multiple files have to be concatenated into a single huge file
 ```
 wget --timestamping 'ftp://hgdownload.cse.ucsc.edu/goldenPath/hg19/chromosomes/*'
 cat *fa.gz > genome.fa.gz
@@ -139,10 +133,12 @@ zcat genome.fa.gz | grep -c ">"
 zcat genome.fa.gz | grep ">"
 gunzip genome.fa.gz
 less genome.fa
+
+#back to original working directory and do symlink
 ln -s /RAID_STORAGE2/stan/FinalProject/genome.fa ./
 ```
 
-### Read alignment to human genome
+##### Read alignment to human genome
 transfer all required files
 ```
 conda install -c bioconda hisat2
